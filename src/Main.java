@@ -6,12 +6,44 @@ import java.util.ArrayList;
 
 public class Main {
 
+    // method to create new resume step by step
+    private static Resume makeResumeBeginner() {
+        // make a new resume object
+
+        Resume myResume = new Resume();
+        // get contact info from user
+        // add contact info to resume
+
+        // get experience info from user
+        // add experience info to resume
+
+        // get education info from user
+        // add education info to resume
+        return myResume;
+    }
+    // method to create new resume advanced
+    private static Resume makeResumeAdvanced() {
+        // make a new resume object
+
+        Resume myResume = new Resume();
+        // get contact info from user
+        // add contact info to resume
+
+        // get experience info from user
+        // add experience info to resume
+
+        // get education info from user
+        // add education info to resume
+        return myResume;
+    }
     //get user info
 
     //create a resume instance
 
     //method to edit resume
+    private static void edtiResume() {
 
+    }
     //save resume for later edit
 
     //export the resume as PDF
@@ -20,7 +52,7 @@ public class Main {
     public static void main(String[] args){
         String greeting = "Hey, what's up! What would you like to do?";
         String title = "ResumeUp!";
-        Icon icon = new ImageIcon("/Users/wanruenikhuantang/Downloads/ResumeUp/icon_logo.png");
+        Icon icon = new ImageIcon("/Users/wanruenikhuantang/Downloads/ResumeUp/icon_logo.png"); // FIXME: change to local path
         String[] selection = {"Create new resume", "Edit existing resume"};
         String defResponse = "Create new resume";
         String response = ""; // user response
@@ -54,23 +86,21 @@ public class Main {
             }
             f.setLayout(null);
             System.out.println("response 2 " + response2);
+            Resume res;
             // case 1: Step by step
+            if (response2.equals("Step by step tutorial")) {
+                res = makeResumeBeginner();
+            }
             // case 2: advanced
-            // make a new resume object
+            else if (response2.equals("Advance mode")) {
+                res = makeResumeAdvanced();
+            }
 
-            Resume myResume = new Resume();
-            // get contact info from user
-            // add contact info to resume
-
-            // get experience info from user
-            // add experience info to resume
-
-            // get education info from user
-            // add education info to resume
 
             // get 
         }
         else { // edit resume
+            editResume();
             return;
         }
     }
