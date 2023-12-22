@@ -6,77 +6,82 @@ import java.util.ArrayList;
 
 public class Main {
 
-    //get user info
+    private static void runApp(){
+        String greeting = "Hey, what's up! Welcome to ResumeUp\nWhat would you like to do?";
+        String title = "ResumeUp!";
+        Icon icon = new ImageIcon("/Users/wanruenikhuantang/Downloads/ResumeUp/icon_logo.png");
+        String[] selection1 = {"Create new resume", "Edit existing resume"};
+        String defResponse = "Create new resume";
+        String response1 = ""; //response: create new OR edit?
 
-    //create a resume instance
+        //create new OR edit?
+        JOptionPane pane = new JOptionPane("hello");
+        Frame f = new Frame("App");
+        try{
+            response1 = (String)pane.showInputDialog(f,greeting,title,JOptionPane.QUESTION_MESSAGE,icon,selection1,defResponse);
+        }catch(HeadlessException he){
+            System.out.println("headless exception..");
+        }//f.setLayout(null);
+        System.out.println("response 1 " + response1);
 
-    //method to edit resume
+        //for create new: advance OR beginner mode?
+        if(response1.equals("Create new resume")){
+            String modeQuestion = "Would you like to create with a step by step guide (Beginner mode)\n" +
+                    "OR create with Advanced mode? ";
+            String[] selection2 = {"Beginner", "Advanced"};
+            String defaultRes2 = "Step by step tutorial";
+            String response2 = ""; //response: creating new resume: advance OR beginner mode?
 
-    //save resume for later edit
+            try{
+                response2 = (String)pane.showInputDialog(f,modeQuestion,title,JOptionPane.QUESTION_MESSAGE,icon,selection2,defaultRes2);
+            }catch(HeadlessException he){
+                System.out.println("headless exception..");
+            }//f.setLayout(null);
+            System.out.println("response 2 " + response2);
 
-    //export the resume as PDF
+            //creating resume
+            Resume res;
+            // case 1: Step by step
+            if (response2.equals("Step by step tutorial")) {
+                res = makeResumeBeginner();
+            } else {// case 2: advanced
+                res = makeResumeAdvanced();
+            }
+
+        }else{
+            //for edit existing resume: which one?
+            editResume();
+        }
+
+
+
+    }
+
+    //method to create new resume - beginner mode
+    private static Resume makeResumeBeginner(){
+        Resume myResume = new Resume();
+        //get contact, experience, education from user
+        //add info to resume
+        return myResume;
+    }
+
+    //method to create new resume - advanced mode
+    private static Resume makeResumeAdvanced(){
+        Resume myResume = new Resume();
+        //get contact, experience, education from user
+        //add info to resume
+        return myResume;
+    }
+
+    //method to edit existing resume
+    private static void editResume(){
+    }
 
     //main
     public static void main(String[] args){
-        String greeting = "Hey, what's up! What would you like to do?";
-        String title = "ResumeUp!";
-        Icon icon = new ImageIcon("/Users/wanruenikhuantang/Downloads/ResumeUp/icon_logo.png");
-        String[] selection = {"Create new resume", "Edit existing resume"};
-        String defResponse = "Create new resume";
-        String response = ""; // user response
-        //what user wants to do
-        JOptionPane pane = new JOptionPane("hello");
-
-        Frame f = new Frame("hello");
-        try{
-            response = (String)pane.showInputDialog(f,greeting,title,JOptionPane.QUESTION_MESSAGE,icon,selection,defResponse);
-        }catch(HeadlessException he){
-            System.out.println("exception..");
-        }
-        f.setLayout(null);
-        System.out.println(response);
-        if (response.equals("Create new resume")) { // new resume
-            System.out.println("inside if");
-            // first get input from the user if they want advanced or step by step
-            String question = "Hey, what's up! Do you want to make a resume step by step or " +
-                    "would you like to use advanced mode?";
-            String title2 = "ResumeUp!";
-            icon = new ImageIcon("/Users/wanruenikhuantang/Downloads/ResumeUp/icon_logo.png");
-            String[] options = {"Step by step tutorial", "Advance mode"};
-            String defaultRes = "Step by step tutorial";
-            String response2 = "";
-            JOptionPane pane2 = new JOptionPane("New resume");
-            Frame f2 = new Frame("New resume");
-            try{
-                response2 = (String)pane2.showInputDialog(f2,question,title2,JOptionPane.QUESTION_MESSAGE,icon,options,defaultRes);
-            }catch(HeadlessException he){
-                System.out.println("exception..");
-            }
-            f.setLayout(null);
-            System.out.println("response 2 " + response2);
-            // case 1: Step by step
-            // case 2: advanced
-            // make a new resume object
-
-            Resume myResume = new Resume();
-            // get contact info from user
-            // add contact info to resume
-
-            // get experience info from user
-            // add experience info to resume
-
-            // get education info from user
-            // add education info to resume
-
-            // get 
-        }
-        else { // edit resume
-            return;
-        }
+        runApp();
     }
 
-        //create new resume
-            //advanced mode, beginner mode
-        //edit existing resumes
+
 
 }
