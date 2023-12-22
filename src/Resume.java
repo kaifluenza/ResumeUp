@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
 public class Resume {
+    private String title; // title of the resume
     private Contact contacts;
     private ArrayList<Club> clubs;
     private ArrayList<Education> education;
@@ -10,6 +11,7 @@ public class Resume {
 
     // constructor
     public Resume() {
+        this.title = "Untitled Resume";
         this.contacts = null;
         this.clubs = new ArrayList<Club>();
         this.education = new ArrayList<Education>();
@@ -17,8 +19,9 @@ public class Resume {
         this.workExps = new ArrayList<WorkExp>();
         this.skills = new Skills();
     }
-    public Resume(Contact c, ArrayList<Club> club, ArrayList<Education> edu, ArrayList<Project> proj,
+    public Resume(String title, Contact c, ArrayList<Club> club, ArrayList<Education> edu, ArrayList<Project> proj,
                   Skills skil, ArrayList<WorkExp> workXp) {
+        this.title = title;
         this.contacts = c;
         this.clubs = club;
         this.education = edu;
@@ -70,6 +73,30 @@ public class Resume {
 
     public ArrayList<WorkExp> getWorkExps() {
         return workExps;
+    }
+    // methods
+    public Boolean exportPdf() {
+        // TODo: export the resume object as a pdf and save it
+        return true;
+    }
+    public void addExperience(WorkExp w) {
+        this.workExps.add(w);
+    }
+    public void addSkill(String s) {
+        this.skills.addSkill(s);
+    }
+    public void addEducation(Education e) {
+        this.education.add(e);
+    }
+    public void addClub(Club club) {
+        this.clubs.add(club);
+    }
+    public void addProject(Project p) {
+        this.projects.add(p);
+    }
+    public void displayResume() {
+        // TODO: display the resume to the user
+
     }
 
 }
