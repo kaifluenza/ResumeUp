@@ -96,7 +96,19 @@ public class Resume {
     }
     public void displayResume() {
         // TODO: display the resume to the user
-
+        // add everything to a string
+        String result = "";
+        Education currEdu;
+        // contacts
+        result = result + this.contacts.getName() + "\n";
+        result = result + this.contacts.getCity() + "\t";
+        result = result + this.contacts.getPhoneNum() + "\n";
+        // Education
+        for (int i = 0; i < this.education.size(); i++) {
+            currEdu = this.education.get(i);
+            result = result + currEdu.get
+        }
+        // display the string in a pane
     }
 
 }
