@@ -15,7 +15,7 @@ public class Main {
         String response1 = ""; //response: create new OR edit?
 
         //create new OR edit?
-        JOptionPane pane = new JOptionPane("hello");
+        JOptionPane pane = new JOptionPane("App");
         Frame f = new Frame("App");
         try{
             response1 = (String)pane.showInputDialog(f,greeting,title,JOptionPane.QUESTION_MESSAGE,icon,selection1,defResponse);
@@ -42,7 +42,7 @@ public class Main {
             //creating resume
             Resume res;
             // case 1: Step by step
-            if (response2.equals("Step by step tutorial")) {
+            if (response2.equals("Beginner")) {
                 res = makeResumeBeginner();
             } else {// case 2: advanced
                 res = makeResumeAdvanced();
@@ -61,6 +61,15 @@ public class Main {
     private static Resume makeResumeBeginner(){
         Resume myResume = new Resume();
         //get contact, experience, education from user
+        JOptionPane pane = new JOptionPane("beginnerResume");
+        Frame f = new Frame("beginnerResume");
+        try{
+            String name = pane.showInputDialog(f,"What is your full name?","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+            String number = pane.showInputDialog(f,"What is your phone number?","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+            String city = pane.showInputDialog(f,"Where do you live? (city and/or state)","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+        }catch(HeadlessException he){
+            System.out.println("headless exception..");
+        }//f.setLayout(null);
         //add info to resume
         return myResume;
     }
