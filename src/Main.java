@@ -41,7 +41,7 @@ public class Main {
     //create a resume instance
 
     //method to edit resume
-    private static void edtiResume() {
+    private static void editResume() {
 
     }
     //save resume for later edit

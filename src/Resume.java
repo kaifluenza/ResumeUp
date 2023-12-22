@@ -1,5 +1,8 @@
+import java.util.ArrayList;
+
 public class Resume {
     private Contact contacts;
-    private Club clubs;
+    private ArrayList<Club> clubs;
     // TODO: finish fields and constructor and methods
+
 }
