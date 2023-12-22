@@ -17,9 +17,59 @@ public class Resume {
         this.workExps = new ArrayList<WorkExp>();
         this.skills = new Skills();
     }
-    // getters
-
+    public Resume(Contact c, ArrayList<Club> club, ArrayList<Education> edu, ArrayList<Project> proj,
+                  Skills skil, ArrayList<WorkExp> workXp) {
+        this.contacts = c;
+        this.clubs = club;
+        this.education = edu;
+        this.projects = proj;
+        this.skills = skil;
+        this.workExps = workXp;
+    }
     // setters
-    // TODO: finish fields and constructor and methods
+    public void setContacts(Contact c) {
+        this.contacts = c;
+    }
+
+    public void setClubs(ArrayList<Club> clubs) {
+        this.clubs = clubs;
+    }
+    public void setEducation(ArrayList<Education> education) {
+        this.education = education;
+    }
+
+    public void setProjects(ArrayList<Project> projects) {
+        this.projects = projects;
+    }
+    public void setSkills(Skills s) {
+        this.skills = s;
+    }
+    public void setWorkExps(ArrayList<WorkExp> w) {
+        this.workExps = w;
+    }
+    // getters
+    public Contact getContacts() {
+        return contacts;
+    }
+
+    public ArrayList<Club> getClubs() {
+        return clubs;
+    }
+
+    public ArrayList<Education> getEducation() {
+        return education;
+    }
+
+    public ArrayList<Project> getProjects() {
+        return projects;
+    }
+
+    public Skills getSkills() {
+        return skills;
+    }
+
+    public ArrayList<WorkExp> getWorkExps() {
+        return workExps;
+    }
 
 }
