@@ -7,6 +7,14 @@ public class Skills {
         this.skill = new ArrayList<String>();
     }
 
+    public ArrayList<String> getSkill() {
+        return skill;
+    }
+
+    public void setSkill(ArrayList<String> skill) {
+        this.skill = skill;
+    }
+
     public void addSkill(String s){
         skill.add(s);
     }
@@ -17,4 +25,5 @@ public class Skills {
             return true;
         }else return false;
     }
+
 }
