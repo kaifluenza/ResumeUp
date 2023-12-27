@@ -111,6 +111,7 @@ public class Resume {
         // Education
         for (int i = 0; i < this.education.size(); i++) {
             currEdu = this.education.get(i);
+
             result = result + currEdu.getDegree() + "\t";
             result = result + currEdu.getStartYear() + "-" + currEdu.getGradYear() + "\n";
             if (currEdu.getGpa() != null) {
@@ -146,6 +147,7 @@ public class Resume {
             else {
                 result = result + sk.getSkill().get(i) + ", ";
             }
+
         }
         result = result + "\n";
         // projects
