@@ -109,7 +109,7 @@ public class Resume {
             currEdu = this.education.get(i);
             result = result + currEdu.getDegree() + " ";
             result = result + currEdu.getStartDate() + "-" + currEdu.getEndDate() + "\n";
-            result = result + currEdu.getTitle() + "- GPA: " + currEdu.getGpa()
+            result = result + currEdu.getTitle() + "- GPA: " + currEdu.getGpa();
 
         }
         // display the string in a pane
