@@ -95,9 +95,10 @@ public class Resume {
         this.projects.add(p);
     }
     public void displayResume() {
-        // TODO: display the resume to the user
         // add everything to a string
         String result = "";
+        // bullet points for the different parts of the resume
+        ArrayList<String> bullets;
         Education currEdu;
         // contacts
         if (this.contacts != null) {
@@ -125,11 +126,12 @@ public class Resume {
         }
         // prof experience
         result = result + "Professional Experience\n";
+        WorkExp currWork;
         for (int i = 0; i < this.workExps.size(); i++) {
-            WorkExp currWork = this.workExps.get(i);
+            currWork = this.workExps.get(i);
             result = result + currWork.getTitle() + "\t" + currWork.getStartDate() + currWork.getEndDate() + "\n";
             result = result + currWork.getCompany() + "\t" + currWork.getLocation() + "\n";
-            ArrayList<String> bullets = currWork.getBulletPoint();
+            bullets = currWork.getBulletPoint();
             for (int j = 0; j < bullets.size(); j++) {
                 result = result + "- " + bullets.get(j) + "\n";
             }
@@ -148,8 +150,9 @@ public class Resume {
         result = result + "\n";
         // projects
         result = result + "Projects\n";
+        Project currProj;
         for (int i = 0; i < this.projects.size(); i++) {
-            Project currProj = this.projects.get(i);
+            currProj = this.projects.get(i);
             if (currProj.getEndDate() == null) {
                 result = result + currProj.getTitle() + "\t" + currProj.getStartDate() + "\n";
             }
@@ -157,12 +160,28 @@ public class Resume {
                 result = result + currProj.getTitle() + "\t" + currProj.getStartDate() + "-" +
                         currProj.getEndDate()+ "\n";
             }
-            ArrayList<String> bullets = currWork.getBulletPoint();
+            bullets = currProj.getBulletPoint();
             for (int j = 0; j < bullets.size(); j++) {
                 result = result + "- " + bullets.get(j) + "\n";
             }
         }
         // clubs
+        result = result + "clubs and Activities\n";
+        Club currClub;
+        for (int i = 0; i < this.clubs.size(); i++) {
+            currClub = this.clubs.get(i);
+            if (currClub.getEndDate() == null) {
+                result = result + currClub.getTitle() + "\t" + currClub.getStartDate() + "-" +
+                        currClub.getEndDate() + "\n";
+            }
+            else {
+                result = result + currClub.getTitle() + "\t" + currClub.getStartDate() + "\n";
+            }
+            bullets = currClub.getBulletPoint();
+            for (int j = 0; j < bullets.size(); j++) {
+                result = result + "- " + bullets.get(j) + "\n";
+            }
+        }
 
 
         // display the string in a pane
