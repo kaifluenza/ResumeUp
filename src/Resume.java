@@ -1,3 +1,5 @@
+import javax.swing.*;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class Resume {
@@ -76,7 +78,7 @@ public class Resume {
     }
     // methods
     public Boolean exportPdf() {
-        // TODo: export the resume object as a pdf and save it
+        // TODO: export the resume object as a pdf and save it
         return true;
     }
     public void addExperience(WorkExp w) {
@@ -99,6 +101,9 @@ public class Resume {
         String result = "";
         // bullet points for the different parts of the resume
         ArrayList<String> bullets;
+        // pane for displaying
+        JOptionPane pane = new JOptionPane();
+        Frame f = new Frame();
         Education currEdu;
         // contacts
         if (this.contacts != null) {
@@ -187,6 +192,7 @@ public class Resume {
 
 
         // display the string in a pane
+        pane.showMessageDialog(f, result, this.title, JOptionPane.PLAIN_MESSAGE);
         System.out.println(result);
     }
 
