@@ -127,7 +127,7 @@ public class Resume {
         result = result + "Professional Experience\n";
         for (int i = 0; i < this.workExps.size(); i++) {
             WorkExp currWork = this.workExps.get(i);
-            result = result + currWork.getTitle() + "\t" + currWork.getStartDate() + currWork.getEndDate() + "\n";// TODO: add getters & setters to WorkExp
+            result = result + currWork.getTitle() + "\t" + currWork.getStartDate() + currWork.getEndDate() + "\n";
             result = result + currWork.getCompany() + "\t" + currWork.getLocation() + "\n";
             ArrayList<String> bullets = currWork.getBulletPoint();
             for (int j = 0; j < bullets.size(); j++) {
@@ -135,10 +135,35 @@ public class Resume {
             }
         }
         // skills
-
+        result = result + "Skills\n";
+        Skills sk = this.getSkills();
+        for (int i = 0; i < sk.getSkill().size(); i++) { // TODO: add getter to Skills
+            if (i == sk.getSkill().size() - 1) {
+                result = result + sk.getSkill().get(i);
+            }
+            else {
+                result = result + sk.getSkill().get(i) + ", ";
+            }
+        }
+        result = result + "\n";
         // projects
-
+        result = result + "Projects\n";
+        for (int i = 0; i < this.projects.size(); i++) {
+            Project currProj = this.projects.get(i);
+            if (currProj.getEndDate() == null) {
+                result = result + currProj.getTitle() + "\t" + currProj.getStartDate() + "\n";
+            }
+            else {
+                result = result + currProj.getTitle() + "\t" + currProj.getStartDate() + "-" +
+                        currProj.getEndDate()+ "\n";
+            }
+            ArrayList<String> bullets = currWork.getBulletPoint();
+            for (int j = 0; j < bullets.size(); j++) {
+                result = result + "- " + bullets.get(j) + "\n";
+            }
+        }
         // clubs
+
 
         // display the string in a pane
         System.out.println(result);

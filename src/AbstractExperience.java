@@ -29,5 +29,43 @@ public abstract class AbstractExperience {
         }else return false;
     }
 
+    public String getTitle() {
+        return title;
+    }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public String getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(String endDate) {
+        this.endDate = endDate;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public ArrayList<String> getBulletPoint() {
+        return bulletPoint;
+    }
+
+    public void setBulletPoint(ArrayList<String> bulletPoint) {
+        this.bulletPoint = bulletPoint;
+    }
 }
