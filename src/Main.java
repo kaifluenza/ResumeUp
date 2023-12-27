@@ -1,8 +1,10 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class Main {
 
@@ -60,17 +62,36 @@ public class Main {
     //method to create new resume - beginner mode
     private static Resume makeResumeBeginner(){
         Resume myResume = new Resume();
-        //get contact, experience, education from user
+        //get contact,education, experience, skill, project, club
         JOptionPane pane = new JOptionPane("beginnerResume");
         Frame f = new Frame("beginnerResume");
         try{
             String name = pane.showInputDialog(f,"What is your full name?","ResumeUp",JOptionPane.QUESTION_MESSAGE);
             String number = pane.showInputDialog(f,"What is your phone number?","ResumeUp",JOptionPane.QUESTION_MESSAGE);
             String city = pane.showInputDialog(f,"Where do you live? (city and/or state)","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+
+            //create a contact section from info gathered so far
+            Contact contact = new Contact(name,number,city);
+
+            //adding link(s) (if any) to contact section
+            int addLink = JOptionPane.showOptionDialog(f,"Would you like to add a link?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
+            while(addLink==JOptionPane.YES_OPTION){
+                String displayUrl = pane.showInputDialog(f,"Please input your link, without https//","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+                Links aLink = new Links("https//"+displayUrl,displayUrl);
+                contact.addLink(aLink);
+                addLink = JOptionPane.showOptionDialog(f,"Would you like to add another link?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
+            }
+
+            System.out.println(contact);
+
+
         }catch(HeadlessException he){
             System.out.println("headless exception..");
         }//f.setLayout(null);
+
         //add info to resume
+
+
         return myResume;
     }
 
