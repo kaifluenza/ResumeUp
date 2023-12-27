@@ -100,19 +100,48 @@ public class Resume {
         String result = "";
         Education currEdu;
         // contacts
-        result = result + this.contacts.getName() + "\n";
-        result = result + this.contacts.getCity() + "\t";
-        result = result + this.contacts.getPhoneNum() + "\n";
+        if (this.contacts != null) {
+            result = result + this.contacts.getName() + "\n";
+            result = result + this.contacts.getCity() + "\t";
+            result = result + this.contacts.getPhoneNum() + "\n";
+        }
+
         result = result + "EDUCATION\n";
         // Education
         for (int i = 0; i < this.education.size(); i++) {
             currEdu = this.education.get(i);
-            result = result + currEdu.getDegree() + " ";
-            result = result + currEdu.getStartDate() + "-" + currEdu.getEndDate() + "\n";
-            result = result + currEdu.getTitle() + "- GPA: " + currEdu.getGpa();
-
+            result = result + currEdu.getDegree() + "\t";
+            result = result + currEdu.getStartYear() + "-" + currEdu.getGradYear() + "\n";
+            if (currEdu.getGpa() != null) {
+                result = result + currEdu.getSchool() + "- GPA: " + currEdu.getGpa() + "\n"; // TODO: add location
+            }
+            else {
+                result = result + currEdu.getSchool() + "\n";
+            }
+            if (currEdu.getMinor() != null) {
+                result = result + currEdu.getMinor() + "\n";
+            }
+            // TODO: add description for education
         }
+        // prof experience
+        result = result + "Professional Experience\n";
+        for (int i = 0; i < this.workExps.size(); i++) {
+            WorkExp currWork = this.workExps.get(i);
+            result = result + currWork.getTitle() + "\t" + currWork.getStartDate() + currWork.getEndDate() + "\n";// TODO: add getters & setters to WorkExp
+            result = result + currWork.getCompany() + "\t" + currWork.getLocation() + "\n";
+            ArrayList<String> bullets = currWork.getBulletPoint();
+            for (int j = 0; j < bullets.size(); j++) {
+                result = result + "- " + bullets.get(j) + "\n";
+            }
+        }
+        // skills
+
+        // projects
+
+        // clubs
+
         // display the string in a pane
+        System.out.println(result);
     }
 
 }
