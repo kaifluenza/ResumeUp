@@ -103,10 +103,14 @@ public class Resume {
         result = result + this.contacts.getName() + "\n";
         result = result + this.contacts.getCity() + "\t";
         result = result + this.contacts.getPhoneNum() + "\n";
+        result = result + "EDUCATION\n";
         // Education
         for (int i = 0; i < this.education.size(); i++) {
             currEdu = this.education.get(i);
-            result = result + currEdu.get
+            result = result + currEdu.getDegree() + " ";
+            result = result + currEdu.getStartDate() + "-" + currEdu.getEndDate() + "\n";
+            result = result + currEdu.getTitle() + "- GPA: " + currEdu.getGpa();
+
         }
         // display the string in a pane
     }
