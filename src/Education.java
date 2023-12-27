@@ -78,6 +78,18 @@ public class Education {
     public void setGpa(String gpa) {
         this.gpa = gpa;
     }
+
+    @Override
+    public String toString() {
+        return "Education{" +
+                "school='" + school + '\'' +
+                ", startYear='" + startYear + '\'' +
+                ", gradYear='" + gradYear + '\'' +
+                ", degree='" + degree + '\'' +
+                ", minor='" + minor + '\'' +
+                ", gpa='" + gpa + '\'' +
+                '}';
+    }
 }
 
 

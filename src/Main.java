@@ -66,13 +66,13 @@ public class Main {
         JOptionPane pane = new JOptionPane("beginnerResume");
         Frame f = new Frame("beginnerResume");
         try{
+            //get contact info
             String name = pane.showInputDialog(f,"What is your full name?","ResumeUp",JOptionPane.QUESTION_MESSAGE);
             String number = pane.showInputDialog(f,"What is your phone number?","ResumeUp",JOptionPane.QUESTION_MESSAGE);
             String city = pane.showInputDialog(f,"Where do you live? (city and/or state)","ResumeUp",JOptionPane.QUESTION_MESSAGE);
 
             //create a contact section from info gathered so far
             Contact contact = new Contact(name,number,city);
-
             //adding link(s) (if any) to contact section
             int addLink = JOptionPane.showOptionDialog(f,"Would you like to add a link?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
             while(addLink==JOptionPane.YES_OPTION){
@@ -82,14 +82,47 @@ public class Main {
                 addLink = JOptionPane.showOptionDialog(f,"Would you like to add another link?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
             }
 
+            //add the contact section to the resume
             System.out.println(contact);
+            myResume.setContacts(contact);
+
+            //education
+            ArrayList<Education> schools = new ArrayList<Education>();
+            int addSchool = JOptionPane.showOptionDialog(f,"Let's add a school/institution!","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
+            while(addSchool==JOptionPane.YES_OPTION){
+                String school = pane.showInputDialog(f,"What is the name of your institution?","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+                String degree = pane.showInputDialog(f,"What degree did you earn or are persuing? eg Bachelor of Computer Science","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+                String start = pane.showInputDialog(f,"When did you start attending? month/year","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+                String end = pane.showInputDialog(f,"When did you graduate/are expected to graduate? month/year","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+                String minor = (JOptionPane.showOptionDialog(f,"Optional: Would you like to include your minor?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) ?
+                        (pane.showInputDialog(f,"What is your minor?","ResumeUp",JOptionPane.QUESTION_MESSAGE)) :
+                        (null);
+                String gpa = (JOptionPane.showOptionDialog(f,"Optional: Would to like to input the GPA?\nTip: It's encouraged if higher than 3.5! ","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) ?
+                        (pane.showInputDialog(f,"What is your GPA, out of a scale? eg 3.6/4.0","ResumeUp",JOptionPane.QUESTION_MESSAGE)) :
+                        (null);
+
+                Education anEd = new Education(school, start, end,degree,minor,gpa);
+                schools.add(anEd);
+
+                addSchool = JOptionPane.showOptionDialog(f,"Would you like to add another institution?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
+            }
+
+            System.out.println(schools);
+            myResume.setEducation(schools);
+
+            //work experience
+
+            //skills
+
+            //project
+
+            //club
 
 
         }catch(HeadlessException he){
             System.out.println("headless exception..");
         }//f.setLayout(null);
 
-        //add info to resume
 
 
         return myResume;
