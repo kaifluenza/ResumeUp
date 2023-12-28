@@ -8,7 +8,7 @@ public class Skills {
     }
 
     public ArrayList<String> getSkill() {
-        return skill;
+        return this.skill;
     }
 
     public void setSkill(ArrayList<String> skill) {
