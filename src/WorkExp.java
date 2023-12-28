@@ -20,4 +20,11 @@ public class WorkExp extends AbstractExperience{
     public void setCompany(String company) {
         this.company = company;
     }
+
+    @Override
+    public String toString() {
+        return "WorkExp{" +
+                "company='" + company + '\'' +
+                "} " + super.toString();
+    }
 }

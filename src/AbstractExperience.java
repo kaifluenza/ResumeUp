@@ -68,4 +68,16 @@ public abstract class AbstractExperience {
     public void setBulletPoint(ArrayList<String> bulletPoint) {
         this.bulletPoint = bulletPoint;
     }
+
+    @Override
+    public String toString() {
+        return "AbstractExperience{" +
+                "title='" + title + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", endDate='" + endDate + '\'' +
+                ", location='" + location + '\'' +
+                ", bulletPoint=" + bulletPoint +
+                '}';
+    }
 }
+
