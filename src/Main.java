@@ -101,8 +101,7 @@ public class Main {
                         (pane.showInputDialog(f,"What is your GPA, out of a scale? eg 3.6/4.0","ResumeUp",JOptionPane.QUESTION_MESSAGE)) :
                         (null);
 
-                Education anEd = new Education(school, start, end,degree,minor,gpa);
-                schools.add(anEd);
+                schools.add(new Education(school, start, end,degree,minor,gpa));
 
                 addSchool = JOptionPane.showOptionDialog(f,"Would you like to add another institution?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
             }
@@ -111,12 +110,39 @@ public class Main {
             myResume.setEducation(schools);
 
             //work experience
+            ArrayList<WorkExp> workExps = new ArrayList<WorkExp>();
+            int addExp = JOptionPane.showOptionDialog(f,"Do you have a work experience to add?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
+            while(addExp==JOptionPane.YES_OPTION){
+                String company = pane.showInputDialog(f,"What is the name of the company in which you worked/are working at?","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+                String workTitle = pane.showInputDialog(f,"What is the title of your position?","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+                String workStart = pane.showInputDialog(f,"When is the start date?","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+                String workEnd = (JOptionPane.showOptionDialog(f,"Are you currently holding this position?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) ?
+                        ("Present") :
+                        (pane.showInputDialog(f,"When did you stop working?","ResumeUp",JOptionPane.QUESTION_MESSAGE));
+                String workLocation = pane.showInputDialog(f,"Where is this position located? city,state, and/or country","ResumeUp",JOptionPane.QUESTION_MESSAGE);
+
+                WorkExp aWork = new WorkExp(workTitle,workStart,workEnd,workLocation,company);
+
+                int addPoint = JOptionPane.showOptionDialog(f,"Can you give a description of what you accomplished in this position?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
+                while(addPoint==JOptionPane.YES_OPTION){
+                    aWork.addBulletPoint(pane.showInputDialog(f,"A brief description of your accomplishments, such that fits into one bullet point!\nYou could say you use X to do Y and accomplished Z","ResumeUp",JOptionPane.QUESTION_MESSAGE));
+                    addPoint = JOptionPane.showOptionDialog(f,"Add another bullet point?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
+                }
+
+                workExps.add(aWork);
+                System.out.println(aWork);
+
+                addExp = JOptionPane.showOptionDialog(f,"Would you like to add another work experience","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
+            }
+            System.out.println(workExps);
 
             //skills
 
             //project
 
             //club
+
+            //don't forget to give the resume a name/title
 
 
         }catch(HeadlessException he){
