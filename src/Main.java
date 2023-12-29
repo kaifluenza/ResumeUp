@@ -134,9 +134,16 @@ public class Main {
 
                 addExp = JOptionPane.showOptionDialog(f,"Would you like to add another work experience","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
             }
-            System.out.println(workExps);
+            myResume.setWorkExps(workExps);
 
             //skills
+            Skills mySkills = new Skills();
+            int addSkill = JOptionPane.showOptionDialog(f,"Let's add skills you have!","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
+            while(addSkill==JOptionPane.YES_OPTION){
+                mySkills.addSkill(pane.showInputDialog(f,"Input a skill you have. (One at a time)","ResumeUp",JOptionPane.QUESTION_MESSAGE));
+                addSkill = JOptionPane.showOptionDialog(f,"Add another skill?","ResumeUp",JOptionPane.YES_NO_OPTION,JOptionPane.QUESTION_MESSAGE,null,new Object[] {"Yes","No"},JOptionPane.YES_NO_OPTION);
+            }
+            myResume.setSkills(mySkills);
 
             //project
 
