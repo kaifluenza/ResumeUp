@@ -14,7 +14,7 @@ public class WorkExp extends AbstractExperience{
         this.company = company;
     }
     public String getCompany() {
-        return company;
+        return this.company;
     }
 
     public void setCompany(String company) {

@@ -10,7 +10,7 @@ public class Links {
     }
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
     public void setUrl(String url) {
@@ -18,7 +18,7 @@ public class Links {
     }
 
     public String getDisplayUrl() {
-        return displayUrl;
+        return this.displayUrl;
     }
 
     public void setDisplayUrl(String displayUrl) {

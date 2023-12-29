@@ -108,8 +108,21 @@ public class Resume {
         // contacts
         if (this.contacts != null) {
             result = result + this.contacts.getName() + "\n";
-            result = result + this.contacts.getCity() + "\t";
-            result = result + this.contacts.getPhoneNum() + "\n";
+            result = result + this.contacts.getCity() + " | ";
+            result = result + this.contacts.getPhoneNum();
+            // if links
+            if (this.contacts.getLinks() != null) {
+                Links link;
+                for (int i = 0; i < this.contacts.getLinks().size(); i++) {
+                    link = this.contacts.getLinks().get(i);
+                    result = result + " | " + link.getDisplayUrl();
+                }
+                result = result + "\n";
+            }
+            // else
+            else {
+                result = result + "\n";
+            }
         }
 
         result = result + "EDUCATION\n";
@@ -117,7 +130,7 @@ public class Resume {
         for (int i = 0; i < this.education.size(); i++) {
             currEdu = this.education.get(i);
 
-            result = result + currEdu.getDegree() + "\t";
+            result = result + currEdu.getDegree() + " \t";
             result = result + currEdu.getStartYear() + "-" + currEdu.getGradYear() + "\n";
             if (currEdu.getGpa() != null) {
                 result = result + currEdu.getSchool() + "- GPA: " + currEdu.getGpa() + "\n"; // TODO: add location
@@ -131,19 +144,19 @@ public class Resume {
             // TODO: add description for education
         }
         // prof experience
-        result = result + "Professional Experience\n";
+        result = result + "PROFESSIONAL EXPERIENCE\n";
         WorkExp currWork;
         for (int i = 0; i < this.workExps.size(); i++) {
             currWork = this.workExps.get(i);
-            result = result + currWork.getTitle() + "\t" + currWork.getStartDate() + currWork.getEndDate() + "\n";
-            result = result + currWork.getCompany() + "\t" + currWork.getLocation() + "\n";
+            result = result + currWork.getTitle() + " " + currWork.getStartDate() + "-" + currWork.getEndDate() + "\n";
+            result = result + currWork.getCompany() + " \t" + currWork.getLocation() + "\n";
             bullets = currWork.getBulletPoint();
             for (int j = 0; j < bullets.size(); j++) {
                 result = result + "- " + bullets.get(j) + "\n";
             }
         }
         // skills
-        result = result + "Skills\n";
+        result = result + "SKILLS\n";
         Skills sk = this.getSkills();
         for (int i = 0; i < sk.getSkill().size(); i++) { // TODO: add getter to Skills
             if (i == sk.getSkill().size() - 1) {
@@ -156,15 +169,15 @@ public class Resume {
         }
         result = result + "\n";
         // projects
-        result = result + "Projects\n";
+        result = result + "PROJECTS\n";
         Project currProj;
         for (int i = 0; i < this.projects.size(); i++) {
             currProj = this.projects.get(i);
             if (currProj.getEndDate() == null) {
-                result = result + currProj.getTitle() + "\t" + currProj.getStartDate() + "\n";
+                result = result + currProj.getTitle() + " " + currProj.getStartDate() + "\n";
             }
             else {
-                result = result + currProj.getTitle() + "\t" + currProj.getStartDate() + "-" +
+                result = result + currProj.getTitle() + " " + currProj.getStartDate() + "-" +
                         currProj.getEndDate()+ "\n";
             }
             bullets = currProj.getBulletPoint();
@@ -173,16 +186,16 @@ public class Resume {
             }
         }
         // clubs
-        result = result + "clubs and Activities\n";
+        result = result + "CLUBS & ACTIVITIES\n";
         Club currClub;
         for (int i = 0; i < this.clubs.size(); i++) {
             currClub = this.clubs.get(i);
-            if (currClub.getEndDate() == null) {
-                result = result + currClub.getTitle() + "\t" + currClub.getStartDate() + "-" +
+            if (currClub.getEndDate() != null) {
+                result = result + currClub.getTitle() + " \t" + currClub.getStartDate() + "-" +
                         currClub.getEndDate() + "\n";
             }
             else {
-                result = result + currClub.getTitle() + "\t" + currClub.getStartDate() + "\n";
+                result = result + currClub.getTitle() + " \t" + currClub.getStartDate() + "\n";
             }
             bullets = currClub.getBulletPoint();
             for (int j = 0; j < bullets.size(); j++) {

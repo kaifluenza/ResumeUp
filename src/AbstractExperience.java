@@ -30,7 +30,7 @@ public abstract class AbstractExperience {
     }
 
     public String getTitle() {
-        return title;
+        return this.title;
     }
 
     public void setTitle(String title) {
@@ -38,7 +38,7 @@ public abstract class AbstractExperience {
     }
 
     public String getStartDate() {
-        return startDate;
+        return this.startDate;
     }
 
     public void setStartDate(String startDate) {
@@ -46,7 +46,7 @@ public abstract class AbstractExperience {
     }
 
     public String getEndDate() {
-        return endDate;
+        return this.endDate;
     }
 
     public void setEndDate(String endDate) {
@@ -54,7 +54,7 @@ public abstract class AbstractExperience {
     }
 
     public String getLocation() {
-        return location;
+        return this.location;
     }
 
     public void setLocation(String location) {
@@ -62,7 +62,7 @@ public abstract class AbstractExperience {
     }
 
     public ArrayList<String> getBulletPoint() {
-        return bulletPoint;
+        return this.bulletPoint;
     }
 
     public void setBulletPoint(ArrayList<String> bulletPoint) {
