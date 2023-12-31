@@ -16,6 +16,7 @@ public class TestClass {
         res.getProjects().get(0).addBulletPoint("Used Android Studio and Java to develop the top-ranked app in stocks" +
                 " and finance 2 years in a row.");
         res.displayResume();
+        res.exportPdf();
     }
 
 }

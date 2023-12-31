@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Education {
     private String school;
     private String startYear;
@@ -5,6 +7,7 @@ public class Education {
     private String degree;
     private String minor;
     private String gpa;
+    private ArrayList<String> bulletPoint;
 
     public Education(String school, String startYear, String gradYear, String degree, String minor, String gpa) {
         this.school = school;
@@ -13,6 +16,7 @@ public class Education {
         this.degree = degree;
         this.minor = minor;
         this.gpa = gpa;
+        this.bulletPoint = new ArrayList<String>();
     }
 
     public Education(String school, String startYear, String gradYear, String degree, String gpa) {
@@ -21,6 +25,7 @@ public class Education {
         this.gradYear = gradYear;
         this.degree = degree;
         this.gpa = gpa;
+        this.bulletPoint = new ArrayList<String>();
     }
 
 
@@ -29,6 +34,7 @@ public class Education {
         this.startYear = startYear;
         this.gradYear = gradYear;
         this.degree = degree;
+        this.bulletPoint = new ArrayList<String>();
     }
 
     public String getSchool() {
@@ -77,6 +83,24 @@ public class Education {
 
     public void setGpa(String gpa) {
         this.gpa = gpa;
+    }
+
+    public ArrayList<String> getBulletPoint() {
+        return bulletPoint;
+    }
+
+    public void setBulletPoint(ArrayList<String> bulletPoint) {
+        this.bulletPoint = bulletPoint;
+    }
+    public void addBulletPoint(String s){
+        bulletPoint.add(s);
+    }
+
+    public Boolean removeBulletPoint(String s){
+        if(bulletPoint.contains(s)){
+            bulletPoint.remove(s);
+            return true;
+        }else return false;
     }
 
     @Override
