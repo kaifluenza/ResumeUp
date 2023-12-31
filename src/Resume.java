@@ -1,5 +1,7 @@
 import javax.swing.*;
+import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
+import java.io.File;
 import java.util.ArrayList;
 
 public class Resume {
@@ -79,6 +81,16 @@ public class Resume {
     // methods
     public Boolean exportPdf() {
         // TODO: export the resume object as a pdf and save it
+        // use jfilechooser to choose a directory to export to
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(FileSystemView.getFileSystemView().getDefaultDirectory());
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int result = chooser.showOpenDialog(null);
+        if (result == JFileChooser.APPROVE_OPTION) {
+            File chosenDir = chooser.getSelectedFile();
+            System.out.println(chosenDir.getAbsolutePath());
+
+        }
         return true;
     }
     public void addExperience(WorkExp w) {
