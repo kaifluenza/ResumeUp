@@ -1,3 +1,5 @@
+package main.java;
+
 import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
