@@ -1,3 +1,5 @@
+package main.java;
+
 public class Club extends AbstractExperience{
     private String clubName;
 

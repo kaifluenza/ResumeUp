@@ -1,3 +1,5 @@
+package main.java;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -176,6 +178,8 @@ public class Main {
     //main
     public static void main(String[] args){
         runApp();
+        TestClass test = new TestClass();
+        test.testDisplayResume();
     }
 
 

@@ -1,3 +1,5 @@
+package main.java;
+
 public class Links {
     private String url;
     private String displayUrl;
