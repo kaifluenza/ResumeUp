@@ -1,6 +1,10 @@
 package main.java;
 
+import java.io.File;
+import java.io.IOException;
+
 public class TestClass {
+    public static final String DEST = "results/resumes/test_resume.pdf";
     public TestClass() {
     }
 
@@ -18,7 +22,11 @@ public class TestClass {
         res.getProjects().get(0).addBulletPoint("Used Android Studio and Java to develop the top-ranked app in stocks" +
                 " and finance 2 years in a row.");
         res.displayResume();
-        res.exportPdf();
+    }
+    public void testExportPdf() throws IOException {
+        File file = new File(DEST);
+        file.getParentFile().mkdirs();
+        new Resume().exportPdf(DEST);
     }
 
 }

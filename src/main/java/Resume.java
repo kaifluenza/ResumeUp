@@ -91,7 +91,7 @@ public class Resume {
         return workExps;
     }
     // methods
-    public Boolean exportPdf() {
+    public Boolean exportPdf(String dest) throws IOException {
         // TODO: export the resume object as a pdf and save it
         // use jfilechooser to choose a directory to export to
         JFileChooser chooser = new JFileChooser();
@@ -110,6 +110,21 @@ public class Resume {
         // generate a string representing the data of the resume
         String myResume = this.generateResumeString();
         // export the pdf into the chosen directory
+        // initialize pdf writer
+        FileOutputStream fos = new FileOutputStream(dest);
+        PdfWriter writer = new PdfWriter(fos);
+
+        // initialize pdf document
+        PdfDocument pdf = new PdfDocument(writer);
+
+        // initialize document
+        Document document = new Document(pdf);
+
+        // add paragraph to the content
+        document.add(new Paragraph("Hello world"));
+
+        // close document
+        document.close();
         return true;
     }
     public void addExperience(WorkExp w) {
