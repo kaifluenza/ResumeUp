@@ -121,7 +121,7 @@ public class Resume {
         Document document = new Document(pdf);
 
         // add paragraph to the content
-        document.add(new Paragraph("Hello world"));
+        document.add(new Paragraph(myResume));
 
         // close document
         document.close();
@@ -142,6 +142,8 @@ public class Resume {
     public void addProject(Project p) {
         this.projects.add(p);
     }
+
+
     public void displayResume() {
         // add everything to a string
         String result = "";

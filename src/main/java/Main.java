@@ -3,6 +3,8 @@ package main.java;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -10,7 +12,7 @@ import java.util.Locale;
 
 public class Main {
 
-    private static void runApp(){
+    private static void runApp()throws IOException{
         String greeting = "Hey, what's up! Welcome to ResumeUp\nWhat would you like to do?";
         String title = "ResumeUp!";
         Icon icon = new ImageIcon("/Users/wanruenikhuantang/Downloads/ResumeUp/icon_logo.png");
@@ -48,9 +50,15 @@ public class Main {
             // case 1: Step by step
             if (response2.equals("Beginner")) {
                 res = makeResumeBeginner();
+
             } else {// case 2: advanced
                 res = makeResumeAdvanced();
             }
+
+            //export
+            File file = new File("results/resumes/test_resume.pdf");
+            file.getParentFile().mkdirs();
+            res.exportPdf("results/resumes/test_resume.pdf");
 
         }else{
             //for edit existing resume: which one?
@@ -62,7 +70,7 @@ public class Main {
     }
 
     //method to create new resume - beginner mode
-    private static Resume makeResumeBeginner(){
+    private static Resume makeResumeBeginner()throws IOException{
         Resume myResume = new Resume();
         //get contact,education, experience, skill, project, club
         JOptionPane pane = new JOptionPane("beginnerResume");
@@ -153,12 +161,11 @@ public class Main {
 
             //don't forget to give the resume a name/title
 
+            myResume.displayResume();
 
         }catch(HeadlessException he){
             System.out.println("headless exception..");
-        }//f.setLayout(null);
-
-
+        }
 
         return myResume;
     }
@@ -176,10 +183,10 @@ public class Main {
     }
 
     //main
-    public static void main(String[] args){
+    public static void main(String[] args)throws IOException {
         runApp();
-        TestClass test = new TestClass();
-        test.testDisplayResume();
+//        TestClass test = new TestClass();
+//        test.testExportPdf(test.testCreateResume());
     }
 
 
