@@ -45,7 +45,8 @@ public class TestClass {
     public void testExportPdf(Resume testResume) throws IOException {
         File file = new File(DEST);
         file.getParentFile().mkdirs();
-        testResume.exportPdf(DEST);
+        //testResume.exportPdf(DEST);
+        testResume.exportPdf2();
     }
 
 

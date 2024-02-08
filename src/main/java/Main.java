@@ -15,7 +15,7 @@ public class Main {
     private static void runApp()throws IOException{
         String greeting = "Hey, what's up! Welcome to ResumeUp\nWhat would you like to do?";
         String title = "ResumeUp!";
-        Icon icon = new ImageIcon("/Users/wanruenikhuantang/Downloads/ResumeUp/icon_logo.png");
+        Icon icon = new ImageIcon(Main.class.getResource("/icon_logo.png"));
         String[] selection1 = {"Create new resume", "Edit existing resume"};
         String defResponse = "Create new resume";
         String response1 = ""; //response: create new OR edit?
@@ -56,9 +56,7 @@ public class Main {
             }
 
             //export
-            File file = new File("results/resumes/test_resume.pdf");
-            file.getParentFile().mkdirs();
-            res.exportPdf("results/resumes/test_resume.pdf");
+            res.exportPdf2();
 
         }else{
             //for edit existing resume: which one?
@@ -184,12 +182,11 @@ public class Main {
 
     //main
     public static void main(String[] args)throws IOException {
-        runApp();
-//        TestClass test = new TestClass();
-//        test.testExportPdf(test.testCreateResume());
+        //runApp();
+
+        TestClass test = new TestClass();
+        test.testExportPdf(test.testCreateResume());
     }
-
-
 
 }
 
