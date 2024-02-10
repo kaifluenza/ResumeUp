@@ -4,6 +4,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 import java.awt.*;
 import java.io.File;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.io.FileOutputStream;
 import java.util.Date;
@@ -12,6 +13,7 @@ import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.LineSeparator;
 
 import java.io.IOException;
 
@@ -166,6 +168,64 @@ public class Resume {
             document = new Document(pdf);
 
             document.add(new Paragraph(myResume));
+            System.out.println("Resume exported to: " + dest);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Failed to export resume.");
+        } finally {
+            if (document != null) {
+                document.close(); // Explicitly close the document
+            }
+        }
+    }
+    public void exportPdf3() {
+        String defaultDirectoryPath = "results/resumes"; // Default directory path
+        File defaultDirectory = new File(defaultDirectoryPath);
+        if (!defaultDirectory.exists()) {
+            defaultDirectory.mkdirs(); // Create the directory if it doesn't exist
+        }
+        String defaultDest = defaultDirectoryPath + File.separator + "my_resume.pdf"; // Default file path
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.setCurrentDirectory(new File(".")); // Start at the current directory
+        chooser.setDialogTitle("Select Directory to Save Resume");
+        chooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        chooser.setAcceptAllFileFilterUsed(false);
+
+        String dest = defaultDest; // Assume default destination initially
+        if (chooser.showSaveDialog(null) == JFileChooser.APPROVE_OPTION) {
+            File selectedDir = chooser.getSelectedFile();
+            if (selectedDir != null && selectedDir.isDirectory()) {
+                // If a directory is selected, update the destination path
+                dest = selectedDir.getAbsolutePath() + File.separator + "my_resume.pdf";
+            } else {
+                System.out.println("Invalid directory selected, using default path.");
+            }
+        } else {
+            System.out.println("No directory selected, using default path.");
+        }
+
+        // Generate a string representing the data of the resume
+        String myResume = generateResumeString();
+        String myName = this.contacts.getName();
+        String myContact = this.contacts.toString();
+        ArrayList<String> myEducation = new ArrayList<String>();
+        ArrayList<String> myExperience = new ArrayList<String>();
+        String mySkills = "";
+        ArrayList<String> myProjects = new ArrayList<String>();
+        ArrayList<String> myClubs = new ArrayList<String>();
+
+        Document document = null;
+        try {
+            FileOutputStream fos = new FileOutputStream(dest);
+            PdfWriter writer = new PdfWriter(fos);
+            PdfDocument pdf = new PdfDocument(writer);
+            document = new Document(pdf);
+
+            document.add(new Paragraph(myName));
+            document.add(new Paragraph(myContact));
+            document.add(new Paragraph());
             System.out.println("Resume exported to: " + dest);
 
         } catch (IOException e) {
