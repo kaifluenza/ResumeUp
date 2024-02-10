@@ -14,6 +14,9 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.element.LineSeparator;
+import sun.font.FontFamily;
+import com.itextpdf.io.font.FontNames;
+import com.itextpdf.layout.element.Text;
 
 import java.io.IOException;
 
@@ -225,7 +228,19 @@ public class Resume {
 
             document.add(new Paragraph(myName));
             document.add(new Paragraph(myContact));
-            document.add(new Paragraph());
+            document.add(new Paragraph("EDUCATION"));
+            Education currEdu;
+            String eduBullet;
+            for (int i = 0; i < this.education.size(); i++) {
+                currEdu = this.education.get(i);
+                document.add(new Paragraph(currEdu.getDegree() + "\t" + currEdu.getStartYear() + "-" + currEdu.getGradYear()));
+                document.add(new Paragraph(currEdu.getSchool() + "- " + currEdu.getGpa()));
+                if (currEdu.getMinor() != null) document.add(new Paragraph(currEdu.getMinor()));
+                for (int j = 0; j < currEdu.getBulletPoint().size(); j++) {
+                    eduBullet = currEdu.getBulletPoint().get(i);
+                    document.add(new Paragraph("\t- " + ))
+                }
+            }
             System.out.println("Resume exported to: " + dest);
 
         } catch (IOException e) {
@@ -237,10 +252,6 @@ public class Resume {
             }
         }
     }
-
-
-
-
 
     public void addExperience(WorkExp w) {
         this.workExps.add(w);
